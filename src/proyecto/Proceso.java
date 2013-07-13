@@ -19,5 +19,14 @@ public class Proceso {
 		return pasos;
 	}
 	
+	public Maquina getSiguiente(Maquina actual){
+		
+		//Regresa la maquina si es que existe en la secuencia, si no regresa null
+		for(int i=0; i<pasos.size(); ++i) {
+			if(pasos.get(i).equals(actual))
+				return pasos.get(i+1);
+		}
+		return null;
+	}
 	
 }

@@ -35,6 +35,7 @@ public class Planta {
 		maquinas.add(new Maquina("Molino 1"));
 		maquinas.add(new Maquina("Molino 3"));
 		maquinas.add(new Maquina("Molino 2 y 4"));
+		maquinas.add(new Maquina("Molino 5"));
 		
 		//Tolvas
 		maquinas.add(new Maquina("Tolva 1"));
@@ -53,17 +54,18 @@ public class Planta {
 		maquinas.add(new Maquina("Criba paquetes"));
 	}
 	 	
-	private Planta(){}
-	
 	public static Maquina getMaquinaPorNombre(String nombre){
 		for(Maquina maquina : maquinas){
 			if(nombre == maquina.getNombre())
 				return maquina;
 		}
+		
 		//TODO
 		System.out.println(nombre + " no se encontro.");
+		System.out.println(Thread.currentThread().getStackTrace()[2].getLineNumber());
 		System.exit(1);
 		return null;
 	}
 
+	private Planta(){}
 }

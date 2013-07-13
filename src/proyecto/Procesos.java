@@ -1,5 +1,6 @@
 package proyecto;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 
@@ -43,7 +44,8 @@ public final class Procesos {
 		//TODO: criba zinc?????????
 		//NORMAL
 		pasos = new LinkedList<Maquina>();
-		pasos.add(Planta.getMaquinaPorNombre("Criba Zinc"));
+		//criba zinc????
+		pasos.add(Planta.getMaquinaPorNombre("Criba 4"));
 		temp = new Proceso("Estearato de zinc normal fino", pasos);
 		procesos.add(temp);
 		
@@ -53,14 +55,14 @@ public final class Procesos {
 		procesos.add(temp);
 		
 		pasos = new LinkedList<Maquina>();
-		pasos.add(Planta.getMaquinaPorNombre("Criba Zinc"));
+		pasos.add(Planta.getMaquinaPorNombre("Criba 4"));
 		pasos.add(Planta.getMaquinaPorNombre("Molino 1"));
 		temp = new Proceso("Estearato de zinc normal grueso", pasos);
 		procesos.add(temp);
 		
 		//ESPECIAL
 		pasos = new LinkedList<Maquina>();
-		pasos.add(Planta.getMaquinaPorNombre("Criba Zinc"));
+		pasos.add(Planta.getMaquinaPorNombre("Criba 4"));
 		temp = new Proceso("Estearato de zinc especial fino", pasos);
 		procesos.add(temp);
 		
@@ -70,7 +72,7 @@ public final class Procesos {
 		procesos.add(temp);
 		
 		pasos = new LinkedList<Maquina>();
-		pasos.add(Planta.getMaquinaPorNombre("Criba Zinc"));
+		pasos.add(Planta.getMaquinaPorNombre("Criba 4"));
 		pasos.add(Planta.getMaquinaPorNombre("Molino 1"));
 		temp = new Proceso("Estearato de zinc especial grueso", pasos);
 		procesos.add(temp);
@@ -165,10 +167,22 @@ public final class Procesos {
 		//----------------------------------------------------------------------------------------------
 	}
 	
-	public void getMaquinasSiguientes(Maquina actual, String proceso){
+	//Regresa toda maquina que podría seguir de la maquina actual, de no haber ni una, 
+	//regresa un arraylist vacio
+	public static HashSet<Maquina> getMaquinasSiguientes(Maquina actual){
+		HashSet<Maquina> maquinas = new HashSet<Maquina>();
+		Maquina temp;
 		
+		for(Proceso proceso : procesos) {
+			temp = proceso.getSiguiente(actual);
+			if(temp != null)
+				maquinas.add(temp);
+		}
+		
+		return maquinas;
 	}
 	
+	//Evitar la instanciacion
 	private Procesos(){}
 
 }

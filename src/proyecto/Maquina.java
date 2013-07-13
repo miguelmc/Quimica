@@ -3,19 +3,23 @@ package proyecto;
 import java.util.Calendar;
 import java.util.HashSet;
 
+import javax.swing.JButton;
+
 
 //<MODEL>
 public class Maquina {
 	private String nombre;
 	private int numBatch;
 	private int cantidad;
-	private Producto producto;
+	private String producto;
 	private boolean enUso;
 	private Calendar inicio;
-
+	private javax.swing.JButton button;
+	
 	public Maquina(String nombre) {
 		this.nombre = nombre;
 		this.enUso = false;
+		button = new JButton();
 	}
 
 	
@@ -28,12 +32,16 @@ public class Maquina {
 		this.cantidad = cantidad;
 	}
 
-	public void setProducto(Producto producto) {
+	public void setProducto(String producto) {
 		this.producto = producto;
 	}
 
-	public void setInicio(Calendar inicio) {
-		this.inicio = inicio;
+	public void setEnUso(boolean enUso) {
+		this.enUso = enUso;
+	}
+	
+	public void setInicio() {
+		inicio = Calendar.getInstance();
 	}
 
 	
@@ -50,7 +58,7 @@ public class Maquina {
 		return cantidad;
 	}
 
-	public Producto getProducto() {
+	public String getProducto() {
 		return producto;
 	}
 
@@ -60,6 +68,11 @@ public class Maquina {
 
 	public Calendar getInicio() {
 		return inicio;
+	}
+
+
+	public javax.swing.JButton getButton() {
+		return button;
 	}
 
 }
