@@ -12,21 +12,32 @@ public class Maquina {
 	private Producto producto;
 	private boolean enUso;
 	private Calendar inicio;
-	
-	private HashSet<Maquina> siguientes;
 
-	public Maquina(String nombre, int numBatch, int cantidad,
-			Producto producto, boolean enUso, Calendar inicio,
-			HashSet<Maquina> siguientes) {
+	public Maquina(String nombre) {
 		this.nombre = nombre;
-		this.numBatch = numBatch;
-		this.cantidad = cantidad;
-		this.producto = producto;
-		this.enUso = enUso;
-		this.inicio = inicio;
-		this.siguientes = siguientes;
+		this.enUso = false;
 	}
 
+	
+	//SETTERS
+	public void setNumBatch(int numBatch) {
+		this.numBatch = numBatch;
+	}
+
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
+	}
+
+	public void setProducto(Producto producto) {
+		this.producto = producto;
+	}
+
+	public void setInicio(Calendar inicio) {
+		this.inicio = inicio;
+	}
+
+	
+	//GETTERS
 	public String getNombre() {
 		return nombre;
 	}
@@ -49,10 +60,6 @@ public class Maquina {
 
 	public Calendar getInicio() {
 		return inicio;
-	}
-
-	public HashSet<Maquina> getSiguientes() {
-		return siguientes;
 	}
 
 }

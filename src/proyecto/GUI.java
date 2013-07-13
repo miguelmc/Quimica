@@ -348,7 +348,9 @@ public class GUI extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void pelitizadorMouseReleased(java.awt.event.MouseEvent evt) {                                          
-        
+        //TODO: Button prompt
+    	
+    	
     }                                         
 
     private void reactor4MouseReleased(java.awt.event.MouseEvent evt) {                                       
