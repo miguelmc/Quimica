@@ -10,9 +10,11 @@
 package proyecto;
 
 import java.awt.Container;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -34,62 +36,6 @@ public class GUI extends javax.swing.JFrame {
 
 	}
 
-	private void displayButtonPrompt(){
-		//    	productos.setModel(new javax.swing.AbstractListModel() {
-		//            String[] strings = { "Paquete lubricante", "Estearato de calcio", "Estearato de zinc", "Estearato de magnesio", "Estearato de sodio" };
-		//            public int getSize() { return strings.length; }
-		//            public Object getElementAt(int i) { return strings[i]; }
-		//        });
-
-		buttonPrompt.setVisible(true);
-
-		/*buttonPrompt.setVisible(true);
-    	final javax.swing.JButton cancelar = new JButton();
-    	cancelar.setText("Cancelar");
-    	cancelar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-            	Container frame = cancelar.getParent();
-				do
-					frame = frame.getParent();
-				while (!(frame instanceof JFrame));
-				((JFrame) frame).dispose();
-            }
-    	});
-
-    	boolean valid;
-    	do{
-    		valid = true;
-	    	final JComponent[] inputs = new JComponent[] {
-	    			new JLabel("Numero de batch: "),
-	    			batch,
-	    			new JLabel("Producto: "),
-	    			productos,
-	    			cancelar
-	    	};
-
-	    	JOptionPane.showMessageDialog(null, inputs, "Especificaciones", JOptionPane.PLAIN_MESSAGE);
-
-	    	System.out.println("You entered " +
-	    			batch.getText() + ", " +
-	    			productos.getSelectedValue());
-
-	    	System.out.println(batch.getText());
-	    	System.out.println(productos.getSelectedIndex());
-
-	    	if(batch.getText().equals(""))
-	    		valid = !valid;
-	    	if(productos.getSelectedIndex() == -1)
-	    		valid = !valid;
-	    	try{
-	    		Integer.parseInt(batch.getText());
-	    	}catch(Exception e){
-	    		if(!batch.getText().equals(""))
-	    			valid = false;
-	    	}
-
-    	}while(!valid);*/
-	}
-
 	/**
 	 * This method is called from within the constructor to initialize the form.
 	 * WARNING: Do NOT modify this code. The content of this method is always
@@ -100,262 +46,426 @@ public class GUI extends javax.swing.JFrame {
 
 		form = new Form();
 		batch = new JTextField();
-		productos = new JList();
-		buttonPrompt = new ButtonPrompt(form);
 
 		filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 100), new java.awt.Dimension(0, 100), new java.awt.Dimension(32767, 100));
+		jDialog1 = new javax.swing.JDialog();
 		
-		pelletizador = Planta.getMaquinaPorNombre("Pelletizador").getButton();
-		
+		//Reactores-------------------------------------------------------------------------------------
 		reactor1 = Planta.getMaquinaPorNombre("Reactor 1").getButton();
 		reactor2 = Planta.getMaquinaPorNombre("Reactor 2").getButton();
 		reactor3 = Planta.getMaquinaPorNombre("Reactor 3").getButton();
 		reactor4 = Planta.getMaquinaPorNombre("Reactor 4").getButton();
 		reactor5 = Planta.getMaquinaPorNombre("Reactor 5").getButton();
 		
+		//Mezcladoras-----------------------------------------------------------------------------------
+		mezc1 = Planta.getMaquinaPorNombre("Mezcladora 1").getButton();
+		mezc2 = Planta.getMaquinaPorNombre("Mezcladora 2").getButton();
+		mezc3 = Planta.getMaquinaPorNombre("Mezcladora 3").getButton();
+		
+		//Tanques---------------------------------------------------------------------------------------
 		tanqueCera = Planta.getMaquinaPorNombre("Tanque cera").getButton();
 		tanqueEstearina = Planta.getMaquinaPorNombre("Tanque estearina").getButton();
 
+		//Molinos---------------------------------------------------------------------------------------
 		molino1 = Planta.getMaquinaPorNombre("Molino 1").getButton();
+		molino2y4 = Planta.getMaquinaPorNombre("Molino 2 y 4").getButton();
+		molino3 = Planta.getMaquinaPorNombre("Molino 3").getButton();
 		molino5 = Planta.getMaquinaPorNombre("Molino 5").getButton();
 		
+		//Rompeterrones---------------------------------------------------------------------------------
 		rt1 = Planta.getMaquinaPorNombre("Rompeterrones 1").getButton();
 		
+		//Cribas----------------------------------------------------------------------------------------
 		criba2 = Planta.getMaquinaPorNombre("Criba 2").getButton();
+		criba3 = Planta.getMaquinaPorNombre("Criba 3").getButton();
+		criba4 = Planta.getMaquinaPorNombre("Criba 4").getButton();
+		criba6 = Planta.getMaquinaPorNombre("Criba 6").getButton();
 		
-
+		//Otros-----------------------------------------------------------------------------------------
+		pelletizador = Planta.getMaquinaPorNombre("Pelletizador").getButton();
+		
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-		pelletizador.setText("Pelletizador");
-		pelletizador.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				pelletizadorMouseClicked(evt);
-			}
-		});
+		javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
-		reactor4.setText("Reactor 4");
-		reactor4.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				reactor4MouseClicked(evt);
-			}
-		});
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-		reactor2.setText("Reactor 2");
-		reactor2.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				reactor2MouseClicked(evt);
-			}
-		});
+        pelletizador.setText("Pelletizador");
+        pelletizador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pelletizadorMouseClicked(evt);
+            }
+        });
 
-		reactor3.setText("Reactor 3");
-		reactor3.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				reactor3MouseClicked(evt);
-			}
-		});
+        reactor4.setText("Reactor 4");
+        reactor4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                reactor4MouseClicked(evt);
+            }
+        });
 
-		tanqueCera.setText("Tanque cera");
-		tanqueCera.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				tanqueCeraMouseClicked(evt);
-			}
-		});
+        reactor2.setText("Reactor 2");
+        reactor2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                reactor2MouseClicked(evt);
+            }
+        });
 
-		tanqueEstearina.setText("Tanque estearina");
-		tanqueEstearina.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				tanqueEstearinaMouseClicked(evt);
-			}
-		});
+        reactor3.setText("Reactor 3");
+        reactor3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                reactor3MouseClicked(evt);
+            }
+        });
 
-		molino1.setText("Molino 1");
-		molino1.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				molino1MouseClicked(evt);
-			}
-		});
+        tanqueCera.setText("Tanque cera");
+        tanqueCera.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tanqueCeraMouseClicked(evt);
+            }
+        });
 
-		rt1.setText("Rompeterrones 1");
-		rt1.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				rt1MouseClicked(evt);
-			}
-		});
+        tanqueEstearina.setText("Tanque estearina");
+        tanqueEstearina.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tanqueEstearinaMouseClicked(evt);
+            }
+        });
 
-		criba2.setText("Criba PF-02");
-		criba2.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				criba2MouseClicked(evt);
-			}
-		});
+        molino1.setText("Molino 1");
+        molino1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                molino1MouseClicked(evt);
+            }
+        });
 
-		molino5.setText("Molino 5");
-		molino5.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				molino5MouseClicked(evt);
-			}
-		});
+        rt1.setText("Rompeterrones 1");
+        rt1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rt1MouseClicked(evt);
+            }
+        });
 
-		reactor5.setText("R5");
-		reactor5.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				reactor5MouseClicked(evt);
-			}
-		});
+        criba2.setText("Criba PF-02");
+        criba2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                criba2MouseClicked(evt);
+            }
+        });
 
-		reactor1.setText("R1");
-		reactor1.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mouseClicked(java.awt.event.MouseEvent evt) {
-				reactor1MouseClicked(evt);
-			}
-		});
+        molino5.setText("Molino 5");
+        molino5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                molino5MouseClicked(evt);
+            }
+        });
 
-		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-		getContentPane().setLayout(layout);
-		layout.setHorizontalGroup(
-				layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(layout.createSequentialGroup()
-						.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-								.addComponent(molino5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(criba2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(rt1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(tanqueEstearina, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-								.addComponent(tanqueCera, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(pelletizador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(molino1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addGroup(layout.createSequentialGroup()
-										.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-												.addComponent(reactor5, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-												.addComponent(reactor1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-												.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-												.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-														.addComponent(reactor4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
-														.addComponent(reactor3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-														.addComponent(reactor2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-														.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 908, Short.MAX_VALUE)
-														.addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-														.addGap(298, 298, 298))
-				);
-		layout.setVerticalGroup(
-				layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(layout.createSequentialGroup()
-						.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-								.addGroup(layout.createSequentialGroup()
-										.addGap(75, 75, 75)
-										.addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-										.addGroup(layout.createSequentialGroup()
-												.addComponent(pelletizador, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-												.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-												.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-														.addGroup(layout.createSequentialGroup()
-																.addComponent(reactor4, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-																.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-																.addComponent(reactor3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-																.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-																.addComponent(reactor2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-																.addGroup(layout.createSequentialGroup()
-																		.addComponent(reactor5, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-																		.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-																		.addComponent(reactor1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-																		.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-																		.addComponent(tanqueCera, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-																		.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-																		.addComponent(tanqueEstearina, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-																		.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-																		.addComponent(molino1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-																		.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-																		.addComponent(rt1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-																		.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-																		.addComponent(criba2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-																		.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-																		.addComponent(molino5, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-																		.addContainerGap(104, Short.MAX_VALUE))
-				);
+        reactor5.setText("R5");
+        reactor5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                reactor5MouseClicked(evt);
+            }
+        });
 
-		pack();
-	}// </editor-fold>                        
+        reactor1.setText("R1");
+        reactor1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                reactor1MouseClicked(evt);
+            }
+        });
+
+        mezc1.setText("Mezcladora 1");
+        mezc1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mezc1MouseClicked(evt);
+            }
+        });
+
+        criba6.setText("Criba 6");
+        criba6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                criba6MouseClicked(evt);
+            }
+        });
+
+        criba3.setText("Criba Paq");
+        criba3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                criba3MouseClicked(evt);
+            }
+        });
+
+        criba4.setText("Criba Zinc");
+        criba4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                criba4MouseClicked(evt);
+            }
+        });
+
+        molino3.setText("Molino 3");
+        molino3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                molino3MouseClicked(evt);
+            }
+        });
+
+        mezc2.setText("Mezc 2");
+        mezc2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mezc2MouseClicked(evt);
+            }
+        });
+
+        mezc3.setText("Mezc 3");
+        mezc3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mezc3MouseClicked(evt);
+            }
+        });
+
+        molino2y4.setText("Molino 2 y 4");
+        molino2y4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                molino2y4MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(molino5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(criba2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rt1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tanqueEstearina, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+                    .addComponent(tanqueCera, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pelletizador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(molino1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(reactor5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(reactor1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(reactor4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
+                            .addComponent(reactor3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(reactor2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(156, 156, 156)
+                        .addComponent(mezc1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(criba6, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(179, 179, 179)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(molino3, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(criba4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+                                .addComponent(criba3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(mezc2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(mezc3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(molino2y4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 359, Short.MAX_VALUE)
+                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(298, 298, 298))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(pelletizador, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(reactor4, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(reactor3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(reactor2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(reactor5, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(reactor1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(mezc1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(criba6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(mezc2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(mezc3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tanqueCera, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(molino2y4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(tanqueEstearina, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(molino1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(criba3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(rt1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(criba2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(molino5, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(criba4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(molino3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(104, Short.MAX_VALUE))
+        );
+
+        pack();
+    }// </editor-fold>                       
 
 	private void pelletizadorMouseClicked(java.awt.event.MouseEvent evt) {
-		Maquina actual = Planta.getMaquinaPorNombre("Pelletizador");
-
-		if(!actual.estaEnUso())
-		{
-			displayButtonPrompt();
-
-			if(form.getBatch() == 0 || form.getProducto().equals(""))
-				return;
-
-			controller.updateAfterPrompt(actual, form);
-		}
-		else {
-			controller.updateToNextStep(actual);
-		}
-		
+		actual = Planta.getMaquinaPorNombre("Pelletizador");
+		controller.displayButtonPrompt(actual);		
 	}                                         
 
 	private void reactor1MouseClicked(java.awt.event.MouseEvent evt) {                                      
-		// TODO add your handling code here:
-	}                                     
+		actual = Planta.getMaquinaPorNombre("Reactor 1");
+		controller.displayButtonPrompt(actual);
+    }                                     
 
-	private void reactor2MouseClicked(java.awt.event.MouseEvent evt) {                                      
-		// TODO add your handling code here:
-	}                                     
+    private void reactor2MouseClicked(java.awt.event.MouseEvent evt) {                                      
+    	actual = Planta.getMaquinaPorNombre("Reactor 2");
+		controller.displayButtonPrompt(actual);
+    }                                     
 
-	private void reactor3MouseClicked(java.awt.event.MouseEvent evt) {                                      
-		// TODO add your handling code here:
-	}                                     
+    private void reactor3MouseClicked(java.awt.event.MouseEvent evt) {                                      
+    	actual = Planta.getMaquinaPorNombre("Reactor 3");
+		controller.displayButtonPrompt(actual);
+    }                                     
 
-	private void reactor4MouseClicked(java.awt.event.MouseEvent evt) {                                      
-		// TODO add your handling code here:
-	}                                     
+    private void reactor4MouseClicked(java.awt.event.MouseEvent evt) {                                      
+    	actual = Planta.getMaquinaPorNombre("Reactor 4");
+		controller.displayButtonPrompt(actual);
+    }                                     
 
-	private void reactor5MouseClicked(java.awt.event.MouseEvent evt) {                                      
-		// TODO add your handling code here:
-	}                                     
+    private void reactor5MouseClicked(java.awt.event.MouseEvent evt) {                                      
+    	actual = Planta.getMaquinaPorNombre("Reactor 5");
+		controller.displayButtonPrompt(actual);
+    }                                     
 
-	private void tanqueCeraMouseClicked(java.awt.event.MouseEvent evt) {                                        
-		// TODO add your handling code here:
-	}                                       
+    private void tanqueCeraMouseClicked(java.awt.event.MouseEvent evt) {                                        
+    	actual = Planta.getMaquinaPorNombre("Tanque cera");
+		controller.displayButtonPrompt(actual);
+    }                                       
 
-	private void tanqueEstearinaMouseClicked(java.awt.event.MouseEvent evt) {                                             
-		// TODO add your handling code here:
-	}                                            
+    private void tanqueEstearinaMouseClicked(java.awt.event.MouseEvent evt) {                                             
+    	actual = Planta.getMaquinaPorNombre("Tanque estearina");
+		controller.displayButtonPrompt(actual);
+    }                                            
 
-	private void molino1MouseClicked(java.awt.event.MouseEvent evt) {                                     
-		// TODO add your handling code here:
-	}                                    
+    private void molino1MouseClicked(java.awt.event.MouseEvent evt) {                                     
+    	actual = Planta.getMaquinaPorNombre("Molino 1");
+		controller.displayButtonPrompt(actual);
+    }                                    
 
-	private void rt1MouseClicked(java.awt.event.MouseEvent evt) {                                 
-		// TODO add your handling code here:
-	}                                
+    private void rt1MouseClicked(java.awt.event.MouseEvent evt) {                                 
+    	actual = Planta.getMaquinaPorNombre("Rompeterrones 1");
+		controller.displayButtonPrompt(actual);
+    }                                
 
-	private void criba2MouseClicked(java.awt.event.MouseEvent evt) {                                     
-		// TODO add your handling code here:
-	}                                    
+    private void criba2MouseClicked(java.awt.event.MouseEvent evt) {                                    
+    	actual = Planta.getMaquinaPorNombre("Criba 2");
+		controller.displayButtonPrompt(actual);
+    }                                   
 
-	private void molino5MouseClicked(java.awt.event.MouseEvent evt) {                                     
-		// TODO add your handling code here:
-	}                                    
+    private void molino5MouseClicked(java.awt.event.MouseEvent evt) {                                     
+    	actual = Planta.getMaquinaPorNombre("Molino 5");
+		controller.displayButtonPrompt(actual);
+    }                                    
+
+    private void mezc1MouseClicked(java.awt.event.MouseEvent evt) {                                   
+    	actual = Planta.getMaquinaPorNombre("Mezcladora 1");
+		controller.displayButtonPrompt(actual);
+    }                                  
+
+    private void criba6MouseClicked(java.awt.event.MouseEvent evt) {                                    
+    	actual = Planta.getMaquinaPorNombre("Criba 6");
+		controller.displayButtonPrompt(actual);
+    }                                   
+
+    private void mezc2MouseClicked(java.awt.event.MouseEvent evt) {                                   
+    	actual = Planta.getMaquinaPorNombre("Mezcladora 2");
+		controller.displayButtonPrompt(actual);
+    }                                  
+
+    private void mezc3MouseClicked(java.awt.event.MouseEvent evt) {                                   
+    	actual = Planta.getMaquinaPorNombre("Mezcladora 3");
+		controller.displayButtonPrompt(actual);
+    }                                  
+
+    private void criba3MouseClicked(java.awt.event.MouseEvent evt) {                                    
+    	actual = Planta.getMaquinaPorNombre("Criba 3");
+		controller.displayButtonPrompt(actual);
+    }                                   
+
+    private void molino2y4MouseClicked(java.awt.event.MouseEvent evt) {                                       
+    	actual = Planta.getMaquinaPorNombre("Molino 2 y 4");
+		controller.displayButtonPrompt(actual);
+    }                                      
+
+    private void criba4MouseClicked(java.awt.event.MouseEvent evt) {                                    
+    	actual = Planta.getMaquinaPorNombre("Criba 4");
+		controller.displayButtonPrompt(actual);
+    }                                   
+
+    private void molino3MouseClicked(java.awt.event.MouseEvent evt) {                                     
+    	actual = Planta.getMaquinaPorNombre("Molino 3");
+		controller.displayButtonPrompt(actual);
+    }                                      
 
 	// Variables declaration - do not modify                     
-	private javax.swing.JButton criba2;
-	private javax.swing.Box.Filler filler1;
-	private javax.swing.JButton molino1;
-	private javax.swing.JButton molino5;
-	private javax.swing.JButton pelletizador;
-	private javax.swing.JButton reactor1;
-	private javax.swing.JButton reactor2;
-	private javax.swing.JButton reactor3;
-	private javax.swing.JButton reactor4;
-	private javax.swing.JButton reactor5;
-	private javax.swing.JButton rt1;
-	private javax.swing.JButton tanqueCera;
-	private javax.swing.JButton tanqueEstearina;
-	// End of variables declaration 
+    private javax.swing.JButton criba2;
+    private javax.swing.JButton criba3;
+    private javax.swing.JButton criba4;
+    private javax.swing.JButton criba6;
+    private javax.swing.Box.Filler filler1;
+    private javax.swing.JDialog jDialog1;
+    private javax.swing.JButton mezc1;
+    private javax.swing.JButton mezc2;
+    private javax.swing.JButton mezc3;
+    private javax.swing.JButton molino1;
+    private javax.swing.JButton molino2y4;
+    private javax.swing.JButton molino3;
+    private javax.swing.JButton molino5;
+    private javax.swing.JButton pelletizador;
+    private javax.swing.JButton reactor1;
+    private javax.swing.JButton reactor2;
+    private javax.swing.JButton reactor3;
+    private javax.swing.JButton reactor4;
+    private javax.swing.JButton reactor5;
+    private javax.swing.JButton rt1;
+    private javax.swing.JButton tanqueCera;
+    private javax.swing.JButton tanqueEstearina;
+    // End of variables declaration
 
 	Form form;
+	Maquina actual;
 	javax.swing.JTextField batch;
-	javax.swing.JList productos;
-	ButtonPrompt buttonPrompt;
 	Controller controller;
 }

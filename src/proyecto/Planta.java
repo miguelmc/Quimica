@@ -1,5 +1,6 @@
 package proyecto;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Planta {
@@ -8,50 +9,105 @@ public class Planta {
 	
 	static{
 		maquinas = new HashSet<Maquina>();
+		ArrayList<String> productos;
 		
-		//Reactores
-		maquinas.add(new Maquina("Reactor 1"));
-		maquinas.add(new Maquina("Reactor 2"));
-		maquinas.add(new Maquina("Reactor 3"));
-		maquinas.add(new Maquina("Reactor 4"));
-		maquinas.add(new Maquina("Reactor 5"));
+		//Reactores-----------------------------------------------------------------------------------
+		//TODO
+		productos = new ArrayList<String>();
+		productos.add("Paquete lubricante");
+		maquinas.add(new Maquina("Reactor 1", productos));
+		maquinas.add(new Maquina("Reactor 2", productos));
+		maquinas.add(new Maquina("Reactor 3", productos));
+		maquinas.add(new Maquina("Reactor 4", productos));
+		maquinas.add(new Maquina("Reactor 5", productos));
 		
-		//Cribas
-		maquinas.add(new Maquina("Criba 1"));
-		maquinas.add(new Maquina("Criba 2"));
-		maquinas.add(new Maquina("Criba 3"));
-		maquinas.add(new Maquina("Criba 4"));
-		maquinas.add(new Maquina("Criba 5"));
-		maquinas.add(new Maquina("Criba 6"));
+		//Cribas---------------------------------------------------------------------------------------
+		//Criba 1 (no se)
+		maquinas.add(new Maquina("Criba 1", null));
 		
-		//Mezcladoras
-		maquinas.add(new Maquina("Mezcladora 1"));
-		maquinas.add(new Maquina("Mezcladora 2"));
-		maquinas.add(new Maquina("Mezcladora 3"));
-		maquinas.add(new Maquina("Mezcladora 4"));
-		maquinas.add(new Maquina("Mezcladora 5"));
+		//Criba 2 (PF-02)
+		productos = new ArrayList<String>();
+		productos.add("Estearato de calcio");
+		maquinas.add(new Maquina("Criba 2", productos));
 		
-		//Molinos
-		maquinas.add(new Maquina("Molino 1"));
-		maquinas.add(new Maquina("Molino 3"));
-		maquinas.add(new Maquina("Molino 2 y 4"));
-		maquinas.add(new Maquina("Molino 5"));
+		//Criba 3 (criba paquetes)
+		productos = new ArrayList<String>();
+		productos.add("Paquete lubricante");
+		maquinas.add(new Maquina("Criba 3", productos));
 		
-		//Tolvas
-		maquinas.add(new Maquina("Tolva 1"));
-		maquinas.add(new Maquina("Tolva 2"));
-		maquinas.add(new Maquina("Tolva 3"));
+		//Criba 4 (criba zinc)
+		productos = new ArrayList<String>();
+		productos.add("Estearato de zinc");
+		maquinas.add(new Maquina("Criba 4", productos));
 		
-		//Rompeterrones
-		maquinas.add(new Maquina("Rompeterrones 1"));
-		maquinas.add(new Maquina("Rompeterrones 2"));
+		//Criba 5 (no se)
+		maquinas.add(new Maquina("Criba 5", null));
 		
-		//Tanques
-		maquinas.add(new Maquina("Tanque cera"));
-		maquinas.add(new Maquina("Tanque estearina"));
+		//Criba 6 (la de la mezc 1)
+		productos = new ArrayList<String>();
+		productos.add("Estearato de calcio");
+		maquinas.add(new Maquina("Criba 6", productos));
 		
-		maquinas.add(new Maquina("Pelletizador"));
-		maquinas.add(new Maquina("Criba paquetes"));
+		//Mezcladoras-----------------------------------------------------------------------------------
+		maquinas.add(new Maquina("Mezcladora 1", null));
+		
+		productos = new ArrayList<String>();
+		productos.add("Estearato de magnesio");
+		productos.add("Estearato de sodio");
+		maquinas.add(new Maquina("Mezcladora 2", productos));
+		
+		productos = new ArrayList<String>();
+		productos.add("Estearato de magnesio");
+		productos.add("Estearato de sodio");
+		maquinas.add(new Maquina("Mezcladora 3", productos));
+		
+		
+		maquinas.add(new Maquina("Mezcladora 4", null));
+		maquinas.add(new Maquina("Mezcladora 5", null));
+		
+		//Molinos---------------------------------------------------------------------------------------
+		
+		//Molino 1
+		productos = new ArrayList<String>();
+		productos.add("Estearato de zinc");
+		productos.add("Estearato de sodio");
+		maquinas.add(new Maquina("Molino 1", productos));
+		
+		productos = new ArrayList<String>();
+		productos.add("Estearato de magnesio");
+		maquinas.add(new Maquina("Molino 3", productos));
+		
+		//Molino 2 y 4
+		productos = new ArrayList<String>();
+		productos.add("Estearato de calcio");
+		maquinas.add(new Maquina("Molino 2 y 4", productos));
+		
+		maquinas.add(new Maquina("Molino 5", null));
+		
+		//Tolvas----------------------------------------------------------------------------------------
+		maquinas.add(new Maquina("Tolva 1", null));
+		maquinas.add(new Maquina("Tolva 2", null));
+		maquinas.add(new Maquina("Tolva 3", null));
+		
+		//Rompeterrones---------------------------------------------------------------------------------
+		maquinas.add(new Maquina("Rompeterrones 1", null));
+		maquinas.add(new Maquina("Rompeterrones 2", null));
+		
+		//Tanques---------------------------------------------------------------------------------------
+		
+		productos = new ArrayList<String>();
+		productos.add("Paquete lubricante");
+		maquinas.add(new Maquina("Tanque cera", productos));
+		
+		maquinas.add(new Maquina("Tanque estearina", null));
+		
+		//Otros------------------------------------------------------------------------------------------
+		
+		//Pelletizador
+		productos = new ArrayList<String>();
+		productos.add("Paquete lubricante");
+		maquinas.add(new Maquina("Pelletizador", productos));
+		
 	}
 	 	
 	public static Maquina getMaquinaPorNombre(String nombre){
@@ -63,7 +119,6 @@ public class Planta {
 		//TODO
 		System.out.println(nombre + " no se encontro.");
 		System.out.println(Thread.currentThread().getStackTrace()[2].getLineNumber());
-		System.exit(1);
 		return null;
 	}
 
