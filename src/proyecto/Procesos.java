@@ -26,6 +26,18 @@ public final class Procesos {
 		temp = new Proceso("Estearato de sodio", pasos);
 		procesos.add(temp);
 		
+		pasos = new LinkedList<Maquina>();
+		pasos.add(Planta.getMaquinaPorNombre("Mezcladora 4"));
+		pasos.add(Planta.getMaquinaPorNombre("Molino 1"));
+		temp = new Proceso("Estearato de sodio", pasos);
+		procesos.add(temp);
+		
+		pasos = new LinkedList<Maquina>();
+		pasos.add(Planta.getMaquinaPorNombre("Mezcladora 5"));
+		pasos.add(Planta.getMaquinaPorNombre("Molino 1"));
+		temp = new Proceso("Estearato de sodio", pasos);
+		procesos.add(temp);
+		
 		//Estearato de magnesio---------------------------------------------------------------------------------
 		pasos = new LinkedList<Maquina>();
 		pasos.add(Planta.getMaquinaPorNombre("Mezcladora 2"));
