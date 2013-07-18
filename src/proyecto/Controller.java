@@ -26,22 +26,23 @@ public class Controller {
 	}
 	
 	public void displayButtonPrompt(Maquina actual){
-		buttonPrompt = new ButtonPrompt(form, actual);
-		if(!actual.estaEnUso())
-		{
-			buttonPrompt.setVisible(true);
-			if(form.getBatch() == 0 || form.getProducto().equals(""))
-			{
-				return;
-			}
-
-			updateAfterPrompt(actual);
-		}
-		else {
-			statusScreen = new StatusScreen(this, actual);
-			statusScreen.setVisible(true);
-			//updateToNextStep(actual);
-		}
+//		form.clear();
+//		buttonPrompt = new ButtonPrompt(form, actual);
+//		if(!actual.estaEnUso())
+//		{
+//			buttonPrompt.setVisible(true);
+//			if(form.getBatch() == 0 || form.getProducto().equals(""))
+//			{
+//				return;
+//			}
+//
+//			updateAfterPrompt(actual);
+//		}
+//		else {
+//			statusScreen = new StatusScreen(this, actual);
+//			statusScreen.setVisible(true);
+//			//updateToNextStep(actual);
+//		}
 	}
 	
 	//Se ejecuta al seleccionar una maquina inactiva

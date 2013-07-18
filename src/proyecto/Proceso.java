@@ -1,18 +1,19 @@
 package proyecto;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Proceso {
 	private String producto, comentarios;
-	private LinkedList<Maquina> pasos;
+	private ArrayList<Maquina> pasos;
 	
-	public Proceso(String producto, LinkedList<Maquina> pasos){
+	public Proceso(String producto, ArrayList<Maquina> pasos){
 		this.producto = producto;
 		this.pasos = pasos;
 		comentarios = "";
 	}
 	
-	public Proceso(String producto, LinkedList<Maquina> pasos, String comentarios){
+	public Proceso(String producto, ArrayList<Maquina> pasos, String comentarios){
 		this.producto = producto;
 		this.pasos = pasos;
 		this.comentarios = comentarios;
@@ -26,7 +27,7 @@ public class Proceso {
 		return comentarios;
 	}
 
-	public LinkedList<Maquina> getPasos() {
+	public ArrayList<Maquina> getPasos() {
 		return pasos;
 	}
 	
