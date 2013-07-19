@@ -22,7 +22,7 @@ public class GUI extends javax.swing.JFrame {
 	}
 
 	private void initComponents() {
-
+		this.setTitle("Mapa de la Planta");
 		form = new Form();
 		batch = new JTextField();
 		campanas = new ArrayList<Campana>();

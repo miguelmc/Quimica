@@ -32,7 +32,7 @@ public class EditWindowTemp extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
-
+    	this.setTitle("Editar Campaña");
     	setLocationRelativeTo(null);
     	setModalityType(DEFAULT_MODALITY_TYPE);
     	

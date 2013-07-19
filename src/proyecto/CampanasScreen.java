@@ -21,7 +21,7 @@ public class CampanasScreen extends javax.swing.JDialog {
     }
 
     private void initComponents() {
-    	
+    	this.setTitle("Campañas");
     	setModalityType(DEFAULT_MODALITY_TYPE);
     	setLocationRelativeTo(null);
     	buttons = new ArrayList<AbstractMap.SimpleEntry<javax.swing.JButton, javax.swing.JLabel> >(5);
