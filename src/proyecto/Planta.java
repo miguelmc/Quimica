@@ -49,7 +49,9 @@ public class Planta {
 		maquinas.add(new Maquina("Criba 6", productos));
 		
 		//Mezcladoras-----------------------------------------------------------------------------------
-		maquinas.add(new Maquina("Mezcladora 1", null));
+		productos = new ArrayList<String>();
+		productos.add("Estearato de calcio");
+		maquinas.add(new Maquina("Mezcladora 1", productos));
 		
 		productos = new ArrayList<String>();
 		productos.add("Estearato de magnesio");

@@ -9,6 +9,11 @@ public class Form {
 		producto = "";
 	}
 
+	public void clear(){
+		batch = 0;
+		producto = "";
+	}
+	
 	public int getBatch() {
 		return batch;
 	}
