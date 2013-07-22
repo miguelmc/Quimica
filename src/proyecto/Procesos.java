@@ -13,81 +13,86 @@ public final class Procesos {
 	static{
 		procesos = new HashSet<Proceso>();
 		
+		//Blends ------------------------------------------------------------------------------------------
+		pasos = new ArrayList<Maquina>();
+		pasos.add(Planta.getMaquinaPorNombre("Mezcladora 4"));
+		pasos.add(Planta.getMaquinaPorNombre("Criba 5"));
+		temp = new Proceso("Blends", pasos, "Mezcladora 4 sin prensa");
+		procesos.add(temp);
+		
+		pasos = new ArrayList<Maquina>();
+		pasos.add(Planta.getMaquinaPorNombre("Mezcladora 5"));
+		pasos.add(Planta.getMaquinaPorNombre("Criba 5"));
+		temp = new Proceso("Blends", pasos, "Mezcladora 5 sin prensa");
+		procesos.add(temp);
+		
+		pasos = new ArrayList<Maquina>();
+		pasos.add(Planta.getMaquinaPorNombre("Mezcladora 4"));
+		pasos.add(Planta.getMaquinaPorNombre("Prensa"));
+		pasos.add(Planta.getMaquinaPorNombre("Criba 5"));
+		temp = new Proceso("Blends", pasos, "Mezcladora 4 con prensa");
+		procesos.add(temp);
+		
+		pasos = new ArrayList<Maquina>();
+		pasos.add(Planta.getMaquinaPorNombre("Mezcladora 5"));
+		pasos.add(Planta.getMaquinaPorNombre("Prensa"));
+		pasos.add(Planta.getMaquinaPorNombre("Criba 5"));
+		temp = new Proceso("Blends", pasos, "Mezcladora 4 con prensa");
+		procesos.add(temp);
+		
+		
 		//Estearato de sodio------------------------------------------------------------------------------------
 		pasos = new ArrayList<Maquina>();
 		pasos.add(Planta.getMaquinaPorNombre("Mezcladora 2"));
 		pasos.add(Planta.getMaquinaPorNombre("Molino 1"));
-		temp = new Proceso("Estearato de sodio", pasos);
+		temp = new Proceso("Estearato de sodio", pasos, "Mezcladora 2 -> Molino 1");
 		procesos.add(temp);
 		
 		pasos = new ArrayList<Maquina>();
 		pasos.add(Planta.getMaquinaPorNombre("Mezcladora 3"));
 		pasos.add(Planta.getMaquinaPorNombre("Molino 1"));
-		temp = new Proceso("Estearato de sodio", pasos);
+		temp = new Proceso("Estearato de sodio", pasos, "Mezcladora 3 -> Molino 1");
 		procesos.add(temp);
 		
 		pasos = new ArrayList<Maquina>();
 		pasos.add(Planta.getMaquinaPorNombre("Mezcladora 4"));
 		pasos.add(Planta.getMaquinaPorNombre("Molino 1"));
-		temp = new Proceso("Estearato de sodio", pasos);
+		temp = new Proceso("Estearato de sodio", pasos, "Mezcladora 4 -> Molino 1");
 		procesos.add(temp);
 		
 		pasos = new ArrayList<Maquina>();
 		pasos.add(Planta.getMaquinaPorNombre("Mezcladora 5"));
 		pasos.add(Planta.getMaquinaPorNombre("Molino 1"));
-		temp = new Proceso("Estearato de sodio", pasos);
+		temp = new Proceso("Estearato de sodio", pasos, "Mezcladora 5 -> Molino 1");
 		procesos.add(temp);
 		
 		//Estearato de magnesio---------------------------------------------------------------------------------
 		pasos = new ArrayList<Maquina>();
 		pasos.add(Planta.getMaquinaPorNombre("Mezcladora 2"));
 		pasos.add(Planta.getMaquinaPorNombre("Molino 3"));
-		temp = new Proceso("Estearato de magnesio", pasos);
+		temp = new Proceso("Estearato de magnesio", pasos, "Mezcladora 2 -> Molino 3");
 		procesos.add(temp);
 		
 		pasos = new ArrayList<Maquina>();
 		pasos.add(Planta.getMaquinaPorNombre("Mezcladora 3"));
 		pasos.add(Planta.getMaquinaPorNombre("Molino 3"));
-		temp = new Proceso("Estearato de magnesio", pasos);
+		temp = new Proceso("Estearato de magnesio", pasos, "Mezcladora 3 -> Molino 3");
 		procesos.add(temp);
 		
-		
-		//Estearato de zinc-------------------------------------------------------------------------------------
-		//TODO: criba zinc?????????
-		//NORMAL
+		//Estearato de potasio---------------------------------------------------------------------------
 		pasos = new ArrayList<Maquina>();
-		//criba zinc????
-		pasos.add(Planta.getMaquinaPorNombre("Criba 4"));
-		temp = new Proceso("Estearato de zinc", pasos, "normal fino");
+		pasos.add(Planta.getMaquinaPorNombre("Mezcladora 4"));
+		pasos.add(Planta.getMaquinaPorNombre("Criba 1"));
+		temp = new Proceso("Estearato de potasio", pasos, "Mezcladora 4 y Criba");
 		procesos.add(temp);
 		
 		pasos = new ArrayList<Maquina>();
-		pasos.add(Planta.getMaquinaPorNombre("Molino 1"));
-		temp = new Proceso("Estearato de zinc", pasos, "normal grueso");
+		pasos.add(Planta.getMaquinaPorNombre("Mezcladora 4"));
+		pasos.add(Planta.getMaquinaPorNombre("Mezcladora 5"));
+		pasos.add(Planta.getMaquinaPorNombre("Criba 1"));
+		temp = new Proceso("Estearato de potasio", pasos, "Mezcladora 4, 5 y Criba");
 		procesos.add(temp);
 		
-		pasos = new ArrayList<Maquina>();
-		pasos.add(Planta.getMaquinaPorNombre("Criba 4"));
-		pasos.add(Planta.getMaquinaPorNombre("Molino 1"));
-		temp = new Proceso("Estearato de zinc", pasos, "normal grueso");
-		procesos.add(temp);
-		
-		//ESPECIAL
-		pasos = new ArrayList<Maquina>();
-		pasos.add(Planta.getMaquinaPorNombre("Criba 4"));
-		temp = new Proceso("Estearato de zinc", pasos, " especial fino");
-		procesos.add(temp);
-		
-		pasos = new ArrayList<Maquina>();
-		pasos.add(Planta.getMaquinaPorNombre("Molino 1"));
-		temp = new Proceso("Estearato de zinc", pasos, "especial grueso");
-		procesos.add(temp);
-		
-		pasos = new ArrayList<Maquina>();
-		pasos.add(Planta.getMaquinaPorNombre("Criba 4"));
-		pasos.add(Planta.getMaquinaPorNombre("Molino 1"));
-		temp = new Proceso("Estearato de zinc", pasos, "especial grueso");
-		procesos.add(temp);
 		
 		//Estearato de calcio ---------------------------------------------------------------------------------------
 		pasos = new ArrayList<Maquina>();
@@ -136,6 +141,10 @@ public final class Procesos {
 		pasos.add(Planta.getMaquinaPorNombre("Criba 3"));
 		temp = new Proceso("Paquete lubricante", pasos, "R1 -> R2 -> Criba + RT");
 		procesos.add(temp);
+		temp = new Proceso("Ceras", pasos, "R1 -> R2 -> Criba + RT");
+		procesos.add(temp);
+		temp = new Proceso("Estearato de zinc", pasos, "R1 -> R2 -> Criba + RT");
+		procesos.add(temp);
 		
 		pasos = new ArrayList<Maquina>();
 		pasos.add(Planta.getMaquinaPorNombre("Reactor 1"));
@@ -144,6 +153,10 @@ public final class Procesos {
 		pasos.add(Planta.getMaquinaPorNombre("Pelletizador"));
 		pasos.add(Planta.getMaquinaPorNombre("Criba 3"));
 		temp = new Proceso("Paquete lubricante", pasos, "R1 -> R3 -> Criba + RT");
+		procesos.add(temp);
+		temp = new Proceso("Ceras", pasos, "R1 -> R3 -> Criba + RT");
+		procesos.add(temp);
+		temp = new Proceso("Estearato de zinc", pasos, "R1 -> R3 -> Criba + RT");
 		procesos.add(temp);
 		
 		pasos = new ArrayList<Maquina>();
@@ -154,6 +167,10 @@ public final class Procesos {
 		pasos.add(Planta.getMaquinaPorNombre("Criba 3"));
 		temp = new Proceso("Paquete lubricante", pasos, "R1 -> R4 -> Criba + RT");
 		procesos.add(temp);
+		temp = new Proceso("Ceras", pasos, "R1 -> R4 -> Criba + RT");
+		procesos.add(temp);
+		temp = new Proceso("Estearato de zinc", pasos, "R1 -> R4 -> Criba + RT");
+		procesos.add(temp);
 		
 		pasos = new ArrayList<Maquina>();
 		pasos.add(Planta.getMaquinaPorNombre("Reactor 5"));
@@ -162,6 +179,10 @@ public final class Procesos {
 		pasos.add(Planta.getMaquinaPorNombre("Pelletizador"));
 		pasos.add(Planta.getMaquinaPorNombre("Criba 3"));
 		temp = new Proceso("Paquete lubricante", pasos, "R5 -> R2 -> Criba + RT");
+		procesos.add(temp);
+		temp = new Proceso("Ceras", pasos, "R5 -> R2 -> Criba + RT");
+		procesos.add(temp);
+		temp = new Proceso("Estearato de zinc", pasos, "R5 -> R2 -> Criba + RT");
 		procesos.add(temp);
 		
 		pasos = new ArrayList<Maquina>();
@@ -172,6 +193,10 @@ public final class Procesos {
 		pasos.add(Planta.getMaquinaPorNombre("Criba 3"));
 		temp = new Proceso("Paquete lubricante", pasos, "R5 -> R3 -> Criba + RT");
 		procesos.add(temp);
+		temp = new Proceso("Ceras", pasos, "R5 -> R3 -> Criba + RT");
+		procesos.add(temp);
+		temp = new Proceso("Estearato de zinc", pasos, "R5 -> R3 -> Criba + RT");
+		procesos.add(temp);
 		
 		pasos = new ArrayList<Maquina>();
 		pasos.add(Planta.getMaquinaPorNombre("Reactor 5"));
@@ -180,6 +205,10 @@ public final class Procesos {
 		pasos.add(Planta.getMaquinaPorNombre("Pelletizador"));
 		pasos.add(Planta.getMaquinaPorNombre("Criba 3"));
 		temp = new Proceso("Paquete lubricante", pasos, "R5 -> R4 -> Criba + RT");
+		procesos.add(temp);
+		temp = new Proceso("Ceras", pasos, "R5 -> R4 -> Criba + RT");
+		procesos.add(temp);
+		temp = new Proceso("Estearato de zinc", pasos, "R5 -> R4 -> Criba + RT");
 		procesos.add(temp);
 		//----------------------------------------------------------------------------------------------
 	}

@@ -32,6 +32,17 @@ public class Campana {
 			cantEnPasos.add(0);
 	}
 	
+	public Campana(Campana c) {
+		//TODO: probably wrong
+		cantidad = c.getCantidad();
+		producto = c.getProducto();
+		proceso = c.getProceso();
+		total = c.getTotal();
+		gasto = c.getGasto();
+		instant = c.getInstant();
+		cantEnPasos = new ArrayList<Integer>(c.getCantEnPasos());
+	}
+
 	public int getTotal() {
 		return total;
 	}

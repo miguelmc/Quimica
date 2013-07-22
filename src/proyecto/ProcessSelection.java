@@ -6,12 +6,20 @@ public class ProcessSelection extends javax.swing.JDialog {
 
     public ProcessSelection(ArrayList<Proceso> procesosDeMaquina) {
     	this.procesosDeMaquina = procesosDeMaquina;
+    	closed = true;
     	
         initComponents();
     }
     
     public Proceso getProcesoActual(){
-    	return procesoActual;
+    	if(!closed)
+    		return procesoActual;
+    	
+    	return null;
+    }
+    
+    public Proceso forceGetProcesoActual(){
+    		return procesoActual;
     }
 
     public String[] getItems(){
@@ -44,6 +52,11 @@ public class ProcessSelection extends javax.swing.JDialog {
         procesos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
             	procesosMouseReleased(evt);
+            }
+        });
+        procesos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                procesosKeyReleased(evt);
             }
         });
         jScrollPane1.setViewportView(procesos);
@@ -103,7 +116,7 @@ public class ProcessSelection extends javax.swing.JDialog {
     }
     
     private void acceptBtnMouseClicked(java.awt.event.MouseEvent evt) {                                       
-        
+        closed = false;
     	dispose();
     }                                      
 
@@ -111,22 +124,37 @@ public class ProcessSelection extends javax.swing.JDialog {
        	dispose();
     }                                      
 
+    private void procesosKeyReleased(java.awt.event.KeyEvent evt) {                                     
+    	listActionHelper();
+    } 
+    
     private void procesosMouseReleased(java.awt.event.MouseEvent evt) {                                      
-        
+    	listActionHelper();
+    }   
+
+    private void listActionHelper(){
     	//borra todo del proceso pasado
-    	if(procesoActual != null){
-    		for(Maquina m : procesoActual.getPasos()) {
-            	m.getButton().setBackground(null);
-            }
+    	if(indices != null){
+    		for(int i : indices) {
+    			procesoActual = procesosDeMaquina.get(i);
+
+    			for(Maquina m : procesoActual.getPasos()) {
+    				m.getButton().setBackground(null);
+    			}
+    		}
     	}
     	
-        procesoActual = procesosDeMaquina.get(procesos.getSelectedIndex());
-        
+    	indices = procesos.getSelectedIndices();
+    	
         //colorea la ruta del proceso
-        for(Maquina m : procesoActual.getPasos()) {
-        	m.getButton().setBackground(Colores.getColor(procesoActual.getProducto()));
+        for(int i : indices) {
+        	procesoActual = procesosDeMaquina.get(i);
+	        for(Maquina m : procesoActual.getPasos()) {
+	        	
+	        	m.getButton().setBackground(Colores.getColor(procesoActual.getProducto()));
+	        }
         }
-    }   
+    }
     
     private javax.swing.JButton CancelBtn;
     private javax.swing.JButton acceptBtn;
@@ -135,5 +163,7 @@ public class ProcessSelection extends javax.swing.JDialog {
     private javax.swing.JLabel statusLabel;
     
     private ArrayList<Proceso> procesosDeMaquina;
+    private boolean closed;
     private Proceso procesoActual;
+    private int[] indices;
 }

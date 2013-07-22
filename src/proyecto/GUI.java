@@ -28,6 +28,7 @@ public class GUI extends javax.swing.JFrame {
 		campanas = new ArrayList<Campana>();
 		for(int i=0; i<5; i++)
 			campanas.add(new Campana());
+		paused = new ArrayList<Campana>();
 		
 
 		filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 100), new java.awt.Dimension(0, 100), new java.awt.Dimension(32767, 100));
@@ -44,6 +45,8 @@ public class GUI extends javax.swing.JFrame {
 		mezc1 = Planta.getMaquinaPorNombre("Mezcladora 1").getButton();
 		mezc2 = Planta.getMaquinaPorNombre("Mezcladora 2").getButton();
 		mezc3 = Planta.getMaquinaPorNombre("Mezcladora 3").getButton();
+		mezc4 = Planta.getMaquinaPorNombre("Mezcladora 4").getButton();
+		mezc5 = Planta.getMaquinaPorNombre("Mezcladora 5").getButton();
 		
 		//Tanques---------------------------------------------------------------------------------------
 		tanqueCera = Planta.getMaquinaPorNombre("Tanque cera").getButton();
@@ -59,18 +62,18 @@ public class GUI extends javax.swing.JFrame {
 		rt1 = Planta.getMaquinaPorNombre("Rompeterrones 1").getButton();
 		
 		//Cribas----------------------------------------------------------------------------------------
+		prensa = Planta.getMaquinaPorNombre("Prensa").getButton();
+		
+		criba1 = Planta.getMaquinaPorNombre("Criba 1").getButton();
 		criba2 = Planta.getMaquinaPorNombre("Criba 2").getButton();
 		criba3 = Planta.getMaquinaPorNombre("Criba 3").getButton();
 		criba4 = Planta.getMaquinaPorNombre("Criba 4").getButton();
+		criba5 = Planta.getMaquinaPorNombre("Criba 5").getButton();
 		criba6 = Planta.getMaquinaPorNombre("Criba 6").getButton();
 		
 		//Otros-----------------------------------------------------------------------------------------
 		pelletizador = Planta.getMaquinaPorNombre("Pelletizador").getButton();
 		
-		criba1 = new JButton();
-	    criba5 = new JButton();
-	    mezc5 = new JButton();
-	    mezc4 = new JButton();
 	    capanasBtn = new JButton();
 		
 		
@@ -237,13 +240,40 @@ public class GUI extends javax.swing.JFrame {
         });
 
         mezc4.setText("Mecladora 4");
+        mezc4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mezc4MouseClicked(evt);
+            }
+        });
 
         mezc5.setText("Mezc 5");
+        mezc5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mezc5MouseClicked(evt);
+            }
+        });
 
         criba1.setText("Criba");
+        criba1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                criba1MouseClicked(evt);
+            }
+        });
 
-        criba5.setText("               Criba              ");
-        
+        criba5.setText("      Criba con rodillo    ");
+        criba5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                criba5MouseClicked(evt);
+            }
+        });
+
+        prensa.setText("Prensa");
+        prensa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                prensaMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -284,10 +314,9 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(mezc2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(mezc3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(molino2y4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 30, Short.MAX_VALUE)
+                .addGap(18, 36, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(mezc5, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(criba1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(mezc4, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -296,8 +325,10 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(criba5)))))
-                .addContainerGap(317, Short.MAX_VALUE))
+                                .addComponent(criba5))))
+                    .addComponent(criba1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(prensa, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(292, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(capanasBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -357,10 +388,13 @@ public class GUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(molino5, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(criba4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(criba4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(prensa, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(molino3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(criba1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(molino3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(criba1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(capanasBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -469,21 +503,46 @@ public class GUI extends javax.swing.JFrame {
 		controller.displayButtonPrompt(actual);
     } 
 
+    private void prensaMouseClicked(java.awt.event.MouseEvent evt) {                                    
+        // TODO add your handling code here:
+    }                                   
+
+    private void mezc4MouseClicked(java.awt.event.MouseEvent evt) {                                   
+        // TODO add your handling code here:
+    }                                  
+
+    private void criba1MouseClicked(java.awt.event.MouseEvent evt) {                                    
+        // TODO add your handling code here:
+    }                                   
+
+    private void mezc5MouseClicked(java.awt.event.MouseEvent evt) {                                   
+        // TODO add your handling code here:
+    }                                  
+
+    private void criba5MouseClicked(java.awt.event.MouseEvent evt) {                                    
+        // TODO add your handling code here:
+    }       
+    
     private void capanasBtnMouseClicked(java.awt.event.MouseEvent evt) {                                    
-    	CampanasScreen campanasScreen = new CampanasScreen(campanas);
+    	CampanasScreen campanasScreen = new CampanasScreen(campanas, paused);
     	campanasScreen.setVisible(true);
     }
 
-	// Variables declaration - do not modify                     
+	// Variables declaration - do not modify                 
+    private javax.swing.JButton prensa;
+    private javax.swing.JButton criba1;
     private javax.swing.JButton criba2;
     private javax.swing.JButton criba3;
     private javax.swing.JButton criba4;
+    private javax.swing.JButton criba5;
     private javax.swing.JButton criba6;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JButton mezc1;
     private javax.swing.JButton mezc2;
     private javax.swing.JButton mezc3;
+    private javax.swing.JButton mezc4;
+    private javax.swing.JButton mezc5;
     private javax.swing.JButton molino1;
     private javax.swing.JButton molino2y4;
     private javax.swing.JButton molino3;
@@ -498,16 +557,13 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton tanqueCera;
     private javax.swing.JButton tanqueEstearina;
     
-    private javax.swing.JButton criba1;
-    private javax.swing.JButton criba5;
-    private javax.swing.JButton mezc5;
-    private javax.swing.JButton mezc4;
     private javax.swing.JButton capanasBtn;
     // End of variables declaration
 
 	Form form;
 	Maquina actual;
 	ArrayList<Campana> campanas;
+	ArrayList<Campana> paused;
 	
 	javax.swing.JTextField batch;
 	Controller controller;

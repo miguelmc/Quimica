@@ -22,8 +22,14 @@ public class Planta {
 		maquinas.add(new Maquina("Reactor 5", productos));
 		
 		//Cribas---------------------------------------------------------------------------------------
+		productos = new ArrayList<String>();
+		productos.add("Blends");
+		maquinas.add(new Maquina("Prensa", productos));
+		
 		//Criba 1 (no se)
-		maquinas.add(new Maquina("Criba 1", null));
+		productos = new ArrayList<String>();
+		productos.add("Estearato de potasio");
+		maquinas.add(new Maquina("Criba 1", productos));
 		
 		//Criba 2 (PF-02)
 		productos = new ArrayList<String>();
@@ -63,9 +69,13 @@ public class Planta {
 		productos.add("Estearato de sodio");
 		maquinas.add(new Maquina("Mezcladora 3", productos));
 		
+		productos = new ArrayList<String>();
+		productos.add("Estearato de potasio");
+		maquinas.add(new Maquina("Mezcladora 4", productos));
 		
-		maquinas.add(new Maquina("Mezcladora 4", null));
-		maquinas.add(new Maquina("Mezcladora 5", null));
+		productos = new ArrayList<String>();
+		productos.add("Estearato de potasio");
+		maquinas.add(new Maquina("Mezcladora 5", productos));
 		
 		//Molinos---------------------------------------------------------------------------------------
 		
